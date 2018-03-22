@@ -9,11 +9,11 @@
     
     touch database/sqlite
     
+    cp .env.example .env
+    
     chmod -R 777 bootstrap/ storage/ database/
     
     composer install
-    
-    cp .env.example .env
     
     php artisan migrate
     
