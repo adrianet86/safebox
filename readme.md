@@ -1,3 +1,8 @@
+### Start
+	git clone -b master safebox.bundle safebox
+
+	cd safebox
+
 ### Run project
 
     docker-compose up --build -d
