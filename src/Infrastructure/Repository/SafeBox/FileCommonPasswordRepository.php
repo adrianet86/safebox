@@ -1,9 +1,9 @@
 <?php
 
-namespace AdsMurai\Infrastructure\Repository\SafeBox;
+namespace SafeBox\Infrastructure\Repository\SafeBox;
 
 
-use AdsMurai\Application\Service\SafeBox\CommonPasswordRepositoryInterface;
+use SafeBox\Application\Service\SafeBox\CommonPasswordRepositoryInterface;
 
 class FileCommonPasswordRepository implements CommonPasswordRepositoryInterface
 {

@@ -14,14 +14,14 @@ use Illuminate\Http\Request;
 */
 Route::group((['prefix' => 'v1']), function () {
 
-    Route::post('/safebox', '\AdsMurai\Infrastructure\UI\Http\SafeBox\SafeBoxController@create');
-    Route::get('/safebox/{id}/open', '\AdsMurai\Infrastructure\UI\Http\SafeBox\SafeBoxController@open');
-    Route::get('/safebox/{id}/', '\AdsMurai\Infrastructure\UI\Http\SafeBox\SafeBoxController@content');
-    Route::post('/safebox/{id}', '\AdsMurai\Infrastructure\UI\Http\SafeBox\SafeBoxController@addItem');
+    Route::post('/safebox', '\SafeBox\Infrastructure\UI\Http\SafeBox\SafeBoxController@create');
+    Route::get('/safebox/{id}/open', '\SafeBox\Infrastructure\UI\Http\SafeBox\SafeBoxController@open');
+    Route::get('/safebox/{id}/', '\SafeBox\Infrastructure\UI\Http\SafeBox\SafeBoxController@content');
+    Route::post('/safebox/{id}', '\SafeBox\Infrastructure\UI\Http\SafeBox\SafeBoxController@addItem');
 
 });
-//Route::post('/safebox', '\AdsMurai\Infrastructure\UI\Http\SafeBox\SafeBoxController@create');
-//Route::get('/safebox/{id}/open', '\AdsMurai\Infrastructure\UI\Http\SafeBox\SafeBoxController@open');
-//Route::get('/safebox/{id}/', '\AdsMurai\Infrastructure\UI\Http\SafeBox\SafeBoxController@content');
-//Route::post('/safebox/{id}', '\AdsMurai\Infrastructure\UI\Http\SafeBox\SafeBoxController@addItem');
+//Route::post('/safebox', '\SafeBox\Infrastructure\UI\Http\SafeBox\SafeBoxController@create');
+//Route::get('/safebox/{id}/open', '\SafeBox\Infrastructure\UI\Http\SafeBox\SafeBoxController@open');
+//Route::get('/safebox/{id}/', '\SafeBox\Infrastructure\UI\Http\SafeBox\SafeBoxController@content');
+//Route::post('/safebox/{id}', '\SafeBox\Infrastructure\UI\Http\SafeBox\SafeBoxController@addItem');
 

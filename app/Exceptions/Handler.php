@@ -2,11 +2,11 @@
 
 namespace App\Exceptions;
 
-use AdsMurai\Domain\SafeBox\InvalidSafeBoxTokenException;
-use AdsMurai\Domain\SafeBox\SafeBoxBlockedException;
-use AdsMurai\Domain\SafeBox\SafeBoxExistsException;
-use AdsMurai\Domain\SafeBox\SafeBoxNotExistsException;
-use AdsMurai\Domain\SafeBox\WrongPasswordException;
+use SafeBox\Domain\SafeBox\InvalidSafeBoxTokenException;
+use SafeBox\Domain\SafeBox\SafeBoxBlockedException;
+use SafeBox\Domain\SafeBox\SafeBoxExistsException;
+use SafeBox\Domain\SafeBox\SafeBoxNotExistsException;
+use SafeBox\Domain\SafeBox\WrongPasswordException;
 use Exception;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
@@ -58,10 +58,10 @@ class Handler extends ExceptionHandler
             // Define the response
             $response = $exception->getMessage();
             $status = 422;
-
             switch ($exception) {
                 case ($this->isHttpException($exception)):
                     $status = $exception->getStatusCode();
+                    $response = $this->convertExceptionToArray($exception);
                     break;
                 case ($exception instanceof SafeBoxExistsException):
                     $status = $exception->getCode();//409
@@ -82,7 +82,11 @@ class Handler extends ExceptionHandler
                     $status = 404;
                     break;
             }
+            if (empty($response)) {
+//                $response = $this->convertExceptionToArray($exception);
+                $response = 'Error';
 
+            }
             return response()->json($response, $status);
         }
         return parent::render($request, $exception);

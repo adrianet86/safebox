@@ -2,11 +2,11 @@
 
 namespace Tests\Application\Service\SafeBox;
 
-use AdsMurai\Application\Service\SafeBox\CreateNewSafeBoxRequest;
-use AdsMurai\Application\Service\SafeBox\CreateNewSafeBoxService;
-use AdsMurai\Domain\SafeBox\SafeBox;
-use AdsMurai\Infrastructure\Repository\SafeBox\FileCommonPasswordRepository;
-use AdsMurai\Infrastructure\Repository\SafeBox\MemorySafeBoxRepository;
+use SafeBox\Application\Service\SafeBox\CreateNewSafeBoxRequest;
+use SafeBox\Application\Service\SafeBox\CreateNewSafeBoxService;
+use SafeBox\Domain\SafeBox\SafeBox;
+use SafeBox\Infrastructure\Repository\SafeBox\FileCommonPasswordRepository;
+use SafeBox\Infrastructure\Repository\SafeBox\MemorySafeBoxRepository;
 use Tests\TestCase;
 
 class CreateNewSafeBoxServiceTest extends TestCase
@@ -52,7 +52,7 @@ class CreateNewSafeBoxServiceTest extends TestCase
 
     /**
      * @test
-     * @expectedException \AdsMurai\Domain\SafeBox\SafeBoxExistsException
+     * @expectedException \SafeBox\Domain\SafeBox\SafeBoxExistsException
      */
     public function box_already_exists_throws_exception_mock_version()
     {
@@ -74,7 +74,7 @@ class CreateNewSafeBoxServiceTest extends TestCase
 
     /**
      * @test
-     * @expectedException \AdsMurai\Domain\SafeBox\SafeBoxExistsException
+     * @expectedException \SafeBox\Domain\SafeBox\SafeBoxExistsException
      */
     public function box_already_exists_throws_exception()
     {

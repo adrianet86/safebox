@@ -2,11 +2,11 @@
 
 namespace Tests\Application\Service\SafeBox;
 
-use AdsMurai\Application\Service\SafeBox\OpenSafeBoxRequest;
-use AdsMurai\Application\Service\SafeBox\OpenSafeBoxService;
-use AdsMurai\Domain\SafeBox\SafeBox;
+use SafeBox\Application\Service\SafeBox\OpenSafeBoxRequest;
+use SafeBox\Application\Service\SafeBox\OpenSafeBoxService;
+use SafeBox\Domain\SafeBox\SafeBox;
 
-use AdsMurai\Infrastructure\Repository\SafeBox\MemorySafeBoxRepository;
+use SafeBox\Infrastructure\Repository\SafeBox\MemorySafeBoxRepository;
 use Tests\TestCase;
 
 class OpenSafeBoxServiceTest extends TestCase
@@ -39,7 +39,7 @@ class OpenSafeBoxServiceTest extends TestCase
 
     /**
      * @test
-     * @expectedException \AdsMurai\Domain\SafeBox\SafeBoxNotExistsException
+     * @expectedException \SafeBox\Domain\SafeBox\SafeBoxNotExistsException
      */
     public function not_found_safebox_throws_exception()
     {
@@ -48,7 +48,7 @@ class OpenSafeBoxServiceTest extends TestCase
 
     /**
      * @test
-     * @expectedException \AdsMurai\Domain\SafeBox\WrongPasswordException
+     * @expectedException \SafeBox\Domain\SafeBox\WrongPasswordException
      */
     public function wrong_password_safebox_throws_exception()
     {

@@ -24,7 +24,7 @@
         ],
         "psr-4": {
             "App\\": "app/",
-            "AdsMurai\\": "src/"
+            "SafeBox\\": "src/"
         }
     },
     "autoload-dev": {

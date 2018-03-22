@@ -1,10 +1,10 @@
 <?php
 
-namespace AdsMurai\Application\Service\SafeBox;
+namespace SafeBox\Application\Service\SafeBox;
 
-use AdsMurai\Domain\SafeBox\SafeBox;
-use AdsMurai\Domain\SafeBox\SafeBoxExistsException;
-use AdsMurai\Domain\SafeBox\SafeBoxRepositoryInterface;
+use SafeBox\Domain\SafeBox\SafeBox;
+use SafeBox\Domain\SafeBox\SafeBoxExistsException;
+use SafeBox\Domain\SafeBox\SafeBoxRepositoryInterface;
 
 class CreateNewSafeBoxService
 {

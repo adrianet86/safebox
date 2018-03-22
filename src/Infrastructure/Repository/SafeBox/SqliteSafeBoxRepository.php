@@ -1,11 +1,11 @@
 <?php
 
-namespace AdsMurai\Infrastructure\Repository\SafeBox;
+namespace SafeBox\Infrastructure\Repository\SafeBox;
 
 
-use AdsMurai\Domain\SafeBox\SafeBox;
-use AdsMurai\Domain\SafeBox\SafeBoxNotExistsException;
-use AdsMurai\Domain\SafeBox\SafeBoxRepositoryInterface;
+use SafeBox\Domain\SafeBox\SafeBox;
+use SafeBox\Domain\SafeBox\SafeBoxNotExistsException;
+use SafeBox\Domain\SafeBox\SafeBoxRepositoryInterface;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 

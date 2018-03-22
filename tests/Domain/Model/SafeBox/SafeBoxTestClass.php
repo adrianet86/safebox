@@ -2,7 +2,7 @@
 
 namespace Tests\Domain\Model\SafeBox;
 
-use AdsMurai\Domain\SafeBox\SafeBox;
+use SafeBox\Domain\SafeBox\SafeBox;
 
 class SafeBoxTestClass extends SafeBox
 {

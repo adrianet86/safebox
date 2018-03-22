@@ -9,7 +9,7 @@
 namespace Tests\Application\Service\SafeBox;
 
 
-use AdsMurai\Application\Service\SafeBox\OpenSafeBoxRequest;
+use SafeBox\Application\Service\SafeBox\OpenSafeBoxRequest;
 use Tests\TestCase;
 
 class OpenSafeBoxRequestTest extends TestCase

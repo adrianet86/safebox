@@ -1,6 +1,6 @@
 <?php
 
-namespace AdsMurai\Domain\SafeBox;
+namespace SafeBox\Domain\SafeBox;
 
 use Carbon\Carbon;
 use Ramsey\Uuid\Uuid;
@@ -20,8 +20,8 @@ class SafeBox
     protected $failedAttempts;
 
     private $encryptMethod = "AES-256-CBC";
-    private $secretKey = 'SafeBox to AdsMurai secret key';
-    private $secretIv = 'SafeBox to AdsMurai secret iv';
+    private $secretKey = 'SafeBox to SafeBox secret key';
+    private $secretIv = 'SafeBox to SafeBox secret iv';
 
     /**
      * SafeBox constructor.

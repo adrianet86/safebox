@@ -2,11 +2,11 @@
 
 namespace Tests\Application\Service\SafeBox;
 
-use AdsMurai\Application\Service\SafeBox\RetrieveSafeBoxContentRequest;
-use AdsMurai\Application\Service\SafeBox\RetrieveSafeBoxContentService;
-use AdsMurai\Domain\SafeBox\SafeBox;
+use SafeBox\Application\Service\SafeBox\RetrieveSafeBoxContentRequest;
+use SafeBox\Application\Service\SafeBox\RetrieveSafeBoxContentService;
+use SafeBox\Domain\SafeBox\SafeBox;
 
-use AdsMurai\Infrastructure\Repository\SafeBox\MemorySafeBoxRepository;
+use SafeBox\Infrastructure\Repository\SafeBox\MemorySafeBoxRepository;
 use Tests\Domain\Model\SafeBox\SafeBoxTestClass;
 use Tests\TestCase;
 
@@ -31,7 +31,7 @@ class RetrieveSafeBoxContentServiceTest extends TestCase
 
     /**
      * @test
-     * @expectedException \AdsMurai\Domain\SafeBox\SafeBoxNotExistsException
+     * @expectedException \SafeBox\Domain\SafeBox\SafeBoxNotExistsException
      */
     public function wrong_id_throws_exception()
     {
@@ -42,7 +42,7 @@ class RetrieveSafeBoxContentServiceTest extends TestCase
 
     /**
      * @test
-     * @expectedException \AdsMurai\Domain\SafeBox\InvalidSafeBoxTokenException
+     * @expectedException \SafeBox\Domain\SafeBox\InvalidSafeBoxTokenException
      */
     public function wrong_token_throws_exception()
     {

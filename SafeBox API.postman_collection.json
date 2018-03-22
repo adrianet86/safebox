@@ -1,0 +1,179 @@
+{
+	"info": {
+		"name": "SafeBox API",
+		"_postman_id": "59c27f47-e015-4afc-8c54-8538ecaf1f8a",
+		"description": "SafeBox technical test",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Create SafeBox",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"name\" : \"My personal SafeBox\",\n\t\"password\": \"¡Safe_password!\"\n}"
+				},
+				"url": {
+					"raw": "localhost:8080/v1/safebox",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"v1",
+						"safebox"
+					]
+				},
+				"description": "Creates a new safebox based on a non-empty name and a password."
+			},
+			"response": []
+		},
+		{
+			"name": "Open SafeBox",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer ¡Safe_password!"
+					},
+					{
+						"key": "Accept-Charset",
+						"value": "UTF-8",
+						"disabled": true
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"name\" : \"My SafeBox\",\n\t\"password\": \"¡Safe_passwor!\"\n}"
+				},
+				"url": {
+					"raw": "localhost:8080/v1/safebox/{{id}}/open",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"v1",
+						"safebox",
+						"{{id}}",
+						"open"
+					]
+				},
+				"description": "Opens the safebox identified by the given ID and with the specified password."
+			},
+			"response": []
+		},
+		{
+			"name": "Add item to a SafeBox",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer {{token}}"
+					},
+					{
+						"key": "Accept-Charset",
+						"value": "UTF-8",
+						"disabled": true
+					},
+					{
+						"key": "",
+						"value": "",
+						"disabled": true
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"item\" : \"My content\"\n}"
+				},
+				"url": {
+					"raw": "localhost:8080/v1/safebox/{{id}}",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"v1",
+						"safebox",
+						"{{id}}"
+					]
+				},
+				"description": "Inserts new contents in the safebox identified by the given ID and wit the given opening token."
+			},
+			"response": []
+		},
+		{
+			"name": "Get SafeBox content",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer {{token}}"
+					},
+					{
+						"key": "Accept-Charset",
+						"value": "UTF-8",
+						"disabled": true
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"name\" : \"My SafeBox\",\n\t\"password\": \"¡Safe_passwor!\"\n}"
+				},
+				"url": {
+					"raw": "localhost:8080/v1/safebox/{{id}}/",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"v1",
+						"safebox",
+						"{{id}}",
+						""
+					]
+				},
+				"description": "Retrieves the currently stored contents in the safebox identified by the given ID and with the given opening token."
+			},
+			"response": []
+		}
+	]
+}

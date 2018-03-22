@@ -1,9 +1,9 @@
 <?php
 
-namespace AdsMurai\Application\Service\SafeBox;
+namespace SafeBox\Application\Service\SafeBox;
 
 
-use AdsMurai\Domain\SafeBox\SafeBoxRepositoryInterface;
+use SafeBox\Domain\SafeBox\SafeBoxRepositoryInterface;
 
 class RetrieveSafeBoxContentService
 {

@@ -1,6 +1,6 @@
 <?php
 
-namespace AdsMurai\Domain\SafeBox;
+namespace SafeBox\Domain\SafeBox;
 
 use Exception;
 use Throwable;

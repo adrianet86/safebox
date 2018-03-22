@@ -1,18 +1,18 @@
 <?php
 
-namespace AdsMurai\Infrastructure\UI\Http\SafeBox;
+namespace SafeBox\Infrastructure\UI\Http\SafeBox;
 
-use AdsMurai\Application\Service\SafeBox\AddSafeBoxItemRequest;
-use AdsMurai\Application\Service\SafeBox\AddSafeBoxItemService;
-use AdsMurai\Application\Service\SafeBox\CreateNewSafeBoxRequest;
-use AdsMurai\Application\Service\SafeBox\CreateNewSafeBoxService;
-use AdsMurai\Application\Service\SafeBox\OpenSafeBoxRequest;
-use AdsMurai\Application\Service\SafeBox\OpenSafeBoxService;
-use AdsMurai\Application\Service\SafeBox\RetrieveSafeBoxContentRequest;
-use AdsMurai\Application\Service\SafeBox\RetrieveSafeBoxContentService;
-use AdsMurai\Infrastructure\Repository\SafeBox\FileCommonPasswordRepository;
-use AdsMurai\Infrastructure\Repository\SafeBox\MemorySafeBoxRepository;
-use AdsMurai\Infrastructure\Repository\SafeBox\SqliteSafeBoxRepository;
+use SafeBox\Application\Service\SafeBox\AddSafeBoxItemRequest;
+use SafeBox\Application\Service\SafeBox\AddSafeBoxItemService;
+use SafeBox\Application\Service\SafeBox\CreateNewSafeBoxRequest;
+use SafeBox\Application\Service\SafeBox\CreateNewSafeBoxService;
+use SafeBox\Application\Service\SafeBox\OpenSafeBoxRequest;
+use SafeBox\Application\Service\SafeBox\OpenSafeBoxService;
+use SafeBox\Application\Service\SafeBox\RetrieveSafeBoxContentRequest;
+use SafeBox\Application\Service\SafeBox\RetrieveSafeBoxContentService;
+use SafeBox\Infrastructure\Repository\SafeBox\FileCommonPasswordRepository;
+use SafeBox\Infrastructure\Repository\SafeBox\MemorySafeBoxRepository;
+use SafeBox\Infrastructure\Repository\SafeBox\SqliteSafeBoxRepository;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpKernel\Exception\UnauthorizedHttpException;
@@ -47,13 +47,13 @@ class SafeBoxController extends Controller
             throw new UnauthorizedHttpException('Password not provided');
         }
 
-        return $headerArray[1];
+        return utf8_encode($headerArray[1]);
     }
 
     /**
      * @param Request $request
      * @return \Illuminate\Http\JsonResponse
-     * @throws \AdsMurai\Domain\SafeBox\SafeBoxExistsException
+     * @throws \SafeBox\Domain\SafeBox\SafeBoxExistsException
      */
     public function create(Request $request)
     {
@@ -77,13 +77,12 @@ class SafeBoxController extends Controller
      * @param string $id
      * @param Request $request
      * @return \Illuminate\Http\JsonResponse
-     * @throws \AdsMurai\Domain\SafeBox\WrongPasswordException
+     * @throws \SafeBox\Domain\SafeBox\WrongPasswordException
      * @throws \Exception
      */
     public function open(string $id, Request $request)
     {
         $password = $this->getSecurityFromRequest($request);
-//        $a = $request->query('expirationTime');//todo revisar
 
         $expirationTime = $request->get('expirationTime') ?? OpenSafeBoxRequest::EXPIRATION;
         $openSafeBoxService = new OpenSafeBoxService($this->safeBoxRepository);

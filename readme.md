@@ -1,3 +1,23 @@
+### Run project
+
+    docker-compose up --build -d
+    
+    chmod -R o+rw bootstrap/ storage/
+    
+    composer install
+    
+    touch database/sqlite
+    
+    chmod 777 -R database
+    
+    php artisan migrate
+    
+Go to [localhost:8080](http://localhost:8080)
+
+### Run tests
+
+    php ./vendor/bin/phpunit --configuration phpunit.xml 
+
 <p align="center"><img src="https://laravel.com/assets/img/components/logo-laravel.svg"></p>
 
 <p align="center">

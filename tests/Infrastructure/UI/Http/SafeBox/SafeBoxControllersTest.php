@@ -2,8 +2,8 @@
 
 namespace Tests\Infrastructure\UI\Http\SafeBox;
 
-use AdsMurai\Domain\SafeBox\SafeBox;
-use AdsMurai\Infrastructure\Repository\SafeBox\SqliteSafeBoxRepository;
+use SafeBox\Domain\SafeBox\SafeBox;
+use SafeBox\Infrastructure\Repository\SafeBox\SqliteSafeBoxRepository;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Ramsey\Uuid\Uuid;

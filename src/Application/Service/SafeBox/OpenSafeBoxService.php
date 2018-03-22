@@ -1,10 +1,10 @@
 <?php
 
-namespace AdsMurai\Application\Service\SafeBox;
+namespace SafeBox\Application\Service\SafeBox;
 
-use AdsMurai\Domain\SafeBox\SafeBoxBlockedException;
-use AdsMurai\Domain\SafeBox\SafeBoxRepositoryInterface;
-use AdsMurai\Domain\SafeBox\WrongPasswordException;
+use SafeBox\Domain\SafeBox\SafeBoxBlockedException;
+use SafeBox\Domain\SafeBox\SafeBoxRepositoryInterface;
+use SafeBox\Domain\SafeBox\WrongPasswordException;
 
 class OpenSafeBoxService
 {

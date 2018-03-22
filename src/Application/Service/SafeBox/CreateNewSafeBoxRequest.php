@@ -1,6 +1,6 @@
 <?php
 
-namespace AdsMurai\Application\Service\SafeBox;
+namespace SafeBox\Application\Service\SafeBox;
 
 
 class CreateNewSafeBoxRequest

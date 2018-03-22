@@ -2,8 +2,8 @@
 
 namespace Tests\Application\Service\SafeBox;
 
-use AdsMurai\Application\Service\SafeBox\PasswordValidator;
-use AdsMurai\Infrastructure\Repository\SafeBox\FileCommonPasswordRepository;
+use SafeBox\Application\Service\SafeBox\PasswordValidator;
+use SafeBox\Infrastructure\Repository\SafeBox\FileCommonPasswordRepository;
 use Tests\TestCase;
 
 class PasswordValidatorTest extends TestCase
@@ -21,7 +21,7 @@ class PasswordValidatorTest extends TestCase
 
     /**
      * @test
-     * @expectedException \AdsMurai\Application\Service\SafeBox\TooShortPasswordException
+     * @expectedException \SafeBox\Application\Service\SafeBox\TooShortPasswordException
      */
     public function password_throws_minim_length_exception()
     {
@@ -31,7 +31,7 @@ class PasswordValidatorTest extends TestCase
 
     /**
      * @test
-     * @expectedException \AdsMurai\Application\Service\SafeBox\CommonPasswordException
+     * @expectedException \SafeBox\Application\Service\SafeBox\CommonPasswordException
      */
     public function new_password_throws_common_password_exception()
     {

@@ -2,7 +2,7 @@
 
 namespace Tests\Domain\Model\SafeBox;
 
-use AdsMurai\Domain\SafeBox\SafeBox;
+use SafeBox\Domain\SafeBox\SafeBox;
 use Ramsey\Uuid\Uuid;
 use Tests\TestCase;
 use TypeError;
@@ -115,7 +115,7 @@ class SafeBoxTest extends TestCase
 
     /**
      * @test
-     * @expectedException \AdsMurai\Domain\SafeBox\InvalidSafeBoxTokenException
+     * @expectedException \SafeBox\Domain\SafeBox\InvalidSafeBoxTokenException
      */
     public function token_is_expired_throws_exception()
     {
@@ -131,7 +131,7 @@ class SafeBoxTest extends TestCase
 
     /**
      * @test
-     * @expectedException \AdsMurai\Domain\SafeBox\WrongPasswordException
+     * @expectedException \SafeBox\Domain\SafeBox\WrongPasswordException
      */
     public function wrong_password_throws_exception()
     {
@@ -145,7 +145,7 @@ class SafeBoxTest extends TestCase
 
     /**
      * @test
-     * @expectedException \AdsMurai\Domain\SafeBox\WrongPasswordException
+     * @expectedException \SafeBox\Domain\SafeBox\WrongPasswordException
      */
     public function max_attempts_throws_exception()
     {
@@ -161,7 +161,7 @@ class SafeBoxTest extends TestCase
 
     /**
      * @test
-     * @expectedException \AdsMurai\Domain\SafeBox\SafeBoxBlockedException
+     * @expectedException \SafeBox\Domain\SafeBox\SafeBoxBlockedException
      */
     public function max_attempts_blocks_safebox_exception()
     {
@@ -175,7 +175,7 @@ class SafeBoxTest extends TestCase
 
     /**
      * @test
-     * @expectedException \AdsMurai\Domain\SafeBox\SafeBoxBlockedException
+     * @expectedException \SafeBox\Domain\SafeBox\SafeBoxBlockedException
      */
     public function blocked_safebox_throws_exception()
     {
