@@ -10,17 +10,17 @@ use SafeBox\Application\Service\SafeBox\OpenSafeBoxRequest;
 use SafeBox\Application\Service\SafeBox\OpenSafeBoxService;
 use SafeBox\Application\Service\SafeBox\RetrieveSafeBoxContentRequest;
 use SafeBox\Application\Service\SafeBox\RetrieveSafeBoxContentService;
-use SafeBox\Infrastructure\Repository\SafeBox\FileCommonPasswordRepository;
 use SafeBox\Infrastructure\Repository\SafeBox\MemorySafeBoxRepository;
 use SafeBox\Infrastructure\Repository\SafeBox\SqliteSafeBoxRepository;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use SafeBox\Infrastructure\Repository\SafeBox\WebCommonPasswordRepository;
 use Symfony\Component\HttpKernel\Exception\UnauthorizedHttpException;
 
 class SafeBoxController extends Controller
 {
     /**
-     * @var FileCommonPasswordRepository
+     * @var WebCommonPasswordRepository
      */
     private $commonPasswordRepository;
     /**
@@ -31,7 +31,7 @@ class SafeBoxController extends Controller
     public function __construct()
     {
         $this->safeBoxRepository =  new SqliteSafeBoxRepository();
-        $this->commonPasswordRepository = new FileCommonPasswordRepository();
+        $this->commonPasswordRepository = new WebCommonPasswordRepository();
     }
 
     /**
