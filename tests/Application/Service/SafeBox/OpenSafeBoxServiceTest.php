@@ -59,10 +59,7 @@ class OpenSafeBoxServiceTest extends TestCase
         $this->openSafeBoxService->execute(new OpenSafeBoxRequest($safeBox->id(), '¡Strong_Password!', 0));
     }
 
-    /**
-     * @test
-     */
-    public function open_safebox_service_generates_token()
+    public function test_open_safebox_service_generates_token()
     {
         $token = $this->executeOpenSafeBoxService();
 

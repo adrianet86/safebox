@@ -59,10 +59,7 @@ class AddSafeBoxItemServiceTest extends TestCase
         return $this->addSafeBoxItemService->execute($request);
     }
 
-    /**
-     * @test
-     */
-    public function add_item_works()
+    public function test_add_item_works()
     {
         $password = '¡Strong_Password!';
         $safeBox = new SafeBox('name', $password);

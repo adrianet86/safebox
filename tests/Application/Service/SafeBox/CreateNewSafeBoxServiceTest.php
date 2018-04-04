@@ -73,10 +73,7 @@ class CreateNewSafeBoxServiceTest extends TestCase
         $this->executeCreateNewSafeBox();
     }
 
-    /**
-     * @test
-     */
-    public function after_create_new_sandbox_is_in_the_repository()
+    public function test_after_create_new_sandbox_is_in_the_repository()
     {
         $safeBox = $this->executeCreateNewSafeBox();
 

@@ -47,10 +47,7 @@ class RetrieveSafeBoxContentServiceTest extends TestCase
         return $this->retrieveSafeBoxContentService->execute($request);
     }
 
-    /**
-     * @test
-     */
-    public function retrieve_content_service_works()
+    public function test_retrieve_content_service_works()
     {
         $password = '¡Strong_Password!';
         $safeBox = new SafeBoxTestClass('name', $password);

@@ -39,10 +39,7 @@ class SafeBoxControllersTest extends TestCase
         $this->url = '/v1/safebox/';
     }
 
-    /**
-     * @test
-     */
-    public function create_new_safe_box_works()
+    public function test_create_new_safe_box_works()
     {
         $response = $this->post($this->url, ['name' => $this->faker->name, 'password' => '¡Safe_password!']);
 
@@ -50,10 +47,7 @@ class SafeBoxControllersTest extends TestCase
         $this->assertTrue(Uuid::isValid($response->json('id')));
     }
 
-    /**
-     * @test
-     */
-    public function existing_safe_box_error_409()
+    public function test_existing_safe_box_error_409()
     {
         $data = ['name' => $this->existingSafeBox->name(), 'password' => $this->password];
 
@@ -61,10 +55,7 @@ class SafeBoxControllersTest extends TestCase
         $responseError->assertStatus(409);
     }
 
-    /**
-     * @test
-     */
-    public function create_safebox_with_wrong_data_error_422_malformed_data()
+    public function test_create_safebox_with_wrong_data_error_422_malformed_data()
     {
         $data = ['name' => ''];
 
@@ -72,10 +63,7 @@ class SafeBoxControllersTest extends TestCase
         $responseError->assertStatus(422);
     }
 
-    /**
-     * @test
-     */
-    public function open_safe_box_works()
+    public function test_open_safe_box_works()
     {
         $this->headers['Authorization'] = 'Bearer ' . $this->password;
 
@@ -87,10 +75,7 @@ class SafeBoxControllersTest extends TestCase
         $this->assertNotNull($token);
     }
 
-    /**
-     * @test
-     */
-    public function expired_token_error_401()
+    public function test_expired_token_error_401()
     {
         $this->headers['Authorization'] = 'Bearer ' . $this->password;
 
@@ -117,10 +102,7 @@ class SafeBoxControllersTest extends TestCase
         $response->assertStatus(401);
     }
 
-    /**
-     * @test
-     */
-    public function open_safe_box_not_found_error_404()
+    public function test_open_safe_box_not_found_error_404()
     {
         $this->headers['Authorization'] = 'Bearer ' . $this->password;
 
@@ -129,20 +111,14 @@ class SafeBoxControllersTest extends TestCase
         $response->assertStatus(404);
     }
 
-    /**
-     * @test
-     */
-    public function open_safe_box_no_authorization_header_error_401()
+    public function test_open_safe_box_no_authorization_header_error_401()
     {
         $response = $this->get($this->url . $this->existingSafeBox->id() . "/open", $this->headers);
 
         $response->assertStatus(401);
     }
 
-    /**
-     * @test
-     */
-    public function open_safe_box_wrong_password_error_401()
+    public function test_open_safe_box_wrong_password_error_401()
     {
         $this->headers['Authorization'] = 'Bearer wrong_password';
 
@@ -151,10 +127,7 @@ class SafeBoxControllersTest extends TestCase
         $response->assertStatus(401);
     }
 
-    /**
-     * @test
-     */
-    public function open_with_wrong_password_many_times_locks_safe_box_error_423()
+    public function test_open_with_wrong_password_many_times_locks_safe_box_error_423()
     {
         $this->headers['Authorization'] = 'Bearer wrong_password';
         //first attempt
@@ -176,10 +149,7 @@ class SafeBoxControllersTest extends TestCase
         $response->assertStatus(423);
     }
 
-    /**
-     * @test
-     */
-    public function add_safe_box_item_works()
+    public function test_add_safe_box_item_works()
     {
         $token = $this->existingSafeBox->tokenByPassword($this->password, 20);
         $this->headers['Authorization'] = 'Bearer ' . $token;
@@ -192,10 +162,7 @@ class SafeBoxControllersTest extends TestCase
         $response->assertStatus(200);
     }
 
-    /**
-     * @test
-     */
-    public function add_safe_box_wrong_token_error_401()
+    public function test_add_safe_box_wrong_token_error_401()
     {
         $token = $this->existingSafeBox->tokenByPassword($this->password, 20);
         $this->headers['Authorization'] = 'Bearer ' . $token;
@@ -208,10 +175,7 @@ class SafeBoxControllersTest extends TestCase
         $response->assertStatus(200);
     }
 
-    /**
-     * @test
-     */
-    public function retrieve_safe_box_content_works()
+    public function test_retrieve_safe_box_content_works()
     {
         $this->headers['Authorization'] = 'Bearer ' . $this->password;
         $items = ['new item', 'second_item'];

@@ -22,10 +22,8 @@ class SafeBoxTest extends TestCase
         new SafeBox('asdasdasdasd', null);
     }
 
-    /**
-     * @test
-     */
-    public function new_safebox_has_valid_id()
+    
+    public function test_new_safebox_has_valid_id()
     {
         $name = 'name';
         $password = 'password';
@@ -39,10 +37,8 @@ class SafeBoxTest extends TestCase
         $this->assertNotEquals($safeBox->id(), (new SafeBox($name, $password))->id());
     }
 
-    /**
-     * @test
-     */
-    public function encrypt_password_works()
+    
+    public function test_encrypt_password_works()
     {
         $name = 'name';
         $password = 'password';
@@ -52,10 +48,8 @@ class SafeBoxTest extends TestCase
         $this->assertNotEquals($safeBox->password(), $password);
     }
 
-    /**
-     * @test
-     */
-    public function is_same_password_works()
+    
+    public function test_is_same_password_works()
     {
         $name = 'name';
         $password = 'password';
@@ -66,10 +60,8 @@ class SafeBoxTest extends TestCase
         $this->assertFalse($safeBox->isMyPassword($password . rand(100, 999)));
     }
 
-    /**
-     * @test
-     */
-    public function generate_token_works()
+    
+    public function test_generate_token_works()
     {
         $password = 'password';
         $expiration = 180;
@@ -81,20 +73,16 @@ class SafeBoxTest extends TestCase
         $this->assertNotNull($token);
     }
 
-    /**
-     * @test
-     */
-    public function invalid_token_throws_exception()
+    
+    public function test_invalid_token_throws_exception()
     {
         $this->expectException(\Exception::class);
         $safeBox = new SafeBox('name', 'password');
         $safeBox->validateToken('invalid_token');
     }
 
-    /**
-     * @test
-     */
-    public function invalid_token_from_other_safebox_throws_exception()
+    
+    public function test_invalid_token_from_other_safebox_throws_exception()
     {
         $this->expectException(\Exception::class);
         $password = 'password';
@@ -106,10 +94,8 @@ class SafeBoxTest extends TestCase
         $this->assertFalse($safeBox->validateToken($token));
     }
 
-    /**
-     * @test
-     */
-    public function token_is_expired_throws_exception()
+    
+    public function test_token_is_expired_throws_exception()
     {
 
         $this->expectException(\SafeBox\Domain\SafeBox\InvalidSafeBoxTokenException::class);
@@ -123,10 +109,8 @@ class SafeBoxTest extends TestCase
         $this->assertTrue($safeBox->validateToken($tokenExpired));
     }
 
-    /**
-     * @test
-     */
-    public function wrong_password_throws_exception()
+    
+    public function test_wrong_password_throws_exception()
     {
         $this->expectException(\SafeBox\Domain\SafeBox\WrongPasswordException::class);
         $password = 'password';
@@ -137,10 +121,8 @@ class SafeBoxTest extends TestCase
         $safeBox->tokenByPassword('wrong_password', $expiration);
     }
 
-    /**
-     * @test
-     */
-    public function max_attempts_throws_exception()
+    
+    public function test_max_attempts_throws_exception()
     {
         $this->expectException(\SafeBox\Domain\SafeBox\WrongPasswordException::class);
         $password = 'password';
@@ -176,10 +158,8 @@ class SafeBoxTest extends TestCase
         $safeBox->tokenByPassword($password, $expiration);
     }
 
-    /**
-     * @test
-     */
-    public function add_item_encrypted_works()
+    
+    public function test_add_item_encrypted_works()
     {
         $password = '¡Strong_Password!';
         $safeBox = new SafeBoxTestClass('name', $password);
@@ -192,10 +172,8 @@ class SafeBoxTest extends TestCase
         $this->assertNotContains($item, $safeBox->getItems());
     }
 
-    /**
-     * @test
-     */
-    public function decrypt_item_works()
+    
+    public function test_decrypt_item_works()
     {
         $password = '¡Strong_Password!';
         $safeBox = new SafeBoxTestClass('name', $password);
