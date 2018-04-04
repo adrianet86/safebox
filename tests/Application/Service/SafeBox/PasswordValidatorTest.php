@@ -19,22 +19,17 @@ class PasswordValidatorTest extends TestCase
         $this->safeBoxPassword = new PasswordValidator(new FileCommonPasswordRepository());
     }
 
-    /**
-     * @test
-     * @expectedException \SafeBox\Application\Service\SafeBox\TooShortPasswordException
-     */
-    public function password_throws_minim_length_exception()
+    public function test_password_throws_minim_length_exception()
     {
+        $this->expectException(\SafeBox\Application\Service\SafeBox\TooShortPasswordException::class);
         $password = 12345;
         $this->safeBoxPassword->validateStrength($password);
     }
 
-    /**
-     * @test
-     * @expectedException \SafeBox\Application\Service\SafeBox\CommonPasswordException
-     */
-    public function new_password_throws_common_password_exception()
+
+    public function test_new_password_throws_common_password_exception()
     {
+        $this->expectException(\SafeBox\Application\Service\SafeBox\CommonPasswordException::class);
         $password = 123456;
         $this->safeBoxPassword->validateStrength($password);
     }

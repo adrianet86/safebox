@@ -14,21 +14,11 @@ use Tests\TestCase;
 
 class OpenSafeBoxRequestTest extends TestCase
 {
-    /**
-     * @test
-     * @expectedException \Exception
-     */
-    public function wrong_expiration_throws_exception()
+
+    public function test_wrong_expiration_throws_exception()
     {
+        $this->expectException(\Exception::class);
         new OpenSafeBoxRequest('id', 'password', 0);
     }
 
-    /**
-     * @test
-     */
-    public function new_request_works()
-    {
-        $request = new OpenSafeBoxRequest('id', 'password', 1);
-        $this->assertInstanceOf(OpenSafeBoxRequest::class, $request);
-    }
 }

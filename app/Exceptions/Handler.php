@@ -64,19 +64,19 @@ class Handler extends ExceptionHandler
                     $response = $this->convertExceptionToArray($exception);
                     break;
                 case ($exception instanceof SafeBoxExistsException):
-                    $status = $exception->getCode();//409
+                    $status = 409;
                     break;
                 case ($exception instanceof InvalidSafeBoxTokenException):
-                    $status = $exception->getCode();//401
+                    $status = 401;
                     break;
                 case ($exception instanceof WrongPasswordException):
-                    $status = $exception->getCode();//401
+                    $status = 401;
                     break;
                 case ($exception instanceof SafeBoxBlockedException):
-                    $status = $exception->getCode();//423
+                    $status = 423;
                     break;
                 case ($exception instanceof SafeBoxNotExistsException):
-                    $status = $exception->getCode();//404
+                    $status = 404;
                     break;
                 case ($exception instanceof ModelNotFoundException):
                     $status = 404;

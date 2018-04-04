@@ -44,7 +44,7 @@ class CreateNewSafeBoxService
         $this->passwordValidator->validateStrength($password);
 
         if (!empty($this->safeBoxRepository->byName($name))) {
-            throw new SafeBoxExistsException("Safebox already exists with this name: $name" , 409);
+            throw new SafeBoxExistsException("Safebox already exists with this name: $name");
         }
 
         $safeBox = new SafeBox($name, $password);

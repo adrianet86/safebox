@@ -37,32 +37,23 @@ class OpenSafeBoxServiceTest extends TestCase
 
     }
 
-    /**
-     * @test
-     * @expectedException \SafeBox\Domain\SafeBox\SafeBoxNotExistsException
-     */
-    public function not_found_safebox_throws_exception()
+    public function test_not_found_safebox_throws_exception()
     {
+        $this->expectException(\SafeBox\Domain\SafeBox\SafeBoxNotExistsException::class);
         $this->openSafeBoxService->execute(new OpenSafeBoxRequest('id_no_existente', ''));
     }
 
-    /**
-     * @test
-     * @expectedException \SafeBox\Domain\SafeBox\WrongPasswordException
-     */
-    public function wrong_password_safebox_throws_exception()
+    public function test_wrong_password_safebox_throws_exception()
     {
+        $this->expectException(\SafeBox\Domain\SafeBox\WrongPasswordException::class);
         $safeBox = new SafeBox('name', '¡Strong_Password!');
         $this->safeBoxRepository->add($safeBox);
         $this->openSafeBoxService->execute(new OpenSafeBoxRequest($safeBox->id(), 'wrong_password'));
     }
 
-    /**
-     * @test
-     * @expectedException \Exception
-     */
-    public function wrong_expiration_time_throws_exception()
+    public function test_wrong_expiration_time_throws_exception()
     {
+        $this->expectException(\Exception::class);
         $safeBox = new SafeBox('name', '¡Strong_Password!');
         $this->safeBoxRepository->add($safeBox);
         $this->openSafeBoxService->execute(new OpenSafeBoxRequest($safeBox->id(), '¡Strong_Password!', 0));

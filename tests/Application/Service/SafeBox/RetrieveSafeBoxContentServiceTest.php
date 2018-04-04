@@ -29,23 +29,17 @@ class RetrieveSafeBoxContentServiceTest extends TestCase
         $this->retrieveSafeBoxContentService = new RetrieveSafeBoxContentService($this->safeBoxRepository);
     }
 
-    /**
-     * @test
-     * @expectedException \SafeBox\Domain\SafeBox\SafeBoxNotExistsException
-     */
-    public function wrong_id_throws_exception()
+    public function test_wrong_id_throws_exception()
     {
+        $this->expectException(\SafeBox\Domain\SafeBox\SafeBoxNotExistsException::class);
         $request = new RetrieveSafeBoxContentRequest('not_exists_id', 'invalid_token');
 
         return $this->retrieveSafeBoxContentService->execute($request);
     }
 
-    /**
-     * @test
-     * @expectedException \SafeBox\Domain\SafeBox\InvalidSafeBoxTokenException
-     */
-    public function wrong_token_throws_exception()
+    public function test_wrong_token_throws_exception()
     {
+        $this->expectException(\SafeBox\Domain\SafeBox\InvalidSafeBoxTokenException::class);
         $safeBox = new SafeBox('name', '¡Strong_Password!');
         $this->safeBoxRepository->add($safeBox);
         $request = new RetrieveSafeBoxContentRequest($safeBox->id(), 'invalid_token');

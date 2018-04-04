@@ -52,7 +52,7 @@ class SqliteSafeBoxRepository extends Model implements SafeBoxRepositoryInterfac
         try {
             return parent::findOrFail($id);
         } catch (ModelNotFoundException $exception) {
-            throw new SafeBoxNotExistsException('SafeBox not found', 404);
+            throw new SafeBoxNotExistsException('SafeBox not found');
         }
     }
 

@@ -100,10 +100,10 @@ class SafeBox
         $this->failedAttempts++;
 
         if ($this->failedAttempts >= self::MAX_FAILED_ATTEMPTS) {
-            throw new SafeBoxBlockedException('Max failed attempts, safebox is blocked', 423);
+            throw new SafeBoxBlockedException('Max failed attempts, safebox is blocked');
         }
 
-        throw new WrongPasswordException('Wrong safebox password', 401);
+        throw new WrongPasswordException('Wrong safebox password');
     }
 
     /**
@@ -115,13 +115,13 @@ class SafeBox
         $expirationDate = $this->decrypt($token, $this->id());
 
         if (empty($expirationDate)) {
-            throw new InvalidSafeBoxTokenException('Invalid token', 401);
+            throw new InvalidSafeBoxTokenException('Invalid token');
         }
 
         $now = Carbon::now()->toDateTimeString();
 
         if ($expirationDate < $now === true) {
-            throw new InvalidSafeBoxTokenException('Token expired', 401);
+            throw new InvalidSafeBoxTokenException('Token expired');
         }
 
     }

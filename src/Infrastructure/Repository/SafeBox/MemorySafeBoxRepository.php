@@ -40,7 +40,7 @@ class MemorySafeBoxRepository implements SafeBoxRepositoryInterface
     {
         $safeBox = $this->byId($id);
         if ($safeBox === null) {
-            throw new SafeBoxNotExistsException('SafeBox not found', 404);
+            throw new SafeBoxNotExistsException('SafeBox not found');
         }
 
         return $safeBox;

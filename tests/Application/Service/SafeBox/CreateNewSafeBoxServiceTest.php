@@ -41,21 +41,15 @@ class CreateNewSafeBoxServiceTest extends TestCase
         return $this->createNewSafeBoxService->execute(new CreateNewSafeBoxRequest('name', '¡Strong_Password!'));
     }
 
-    /**
-     * @test
-     * @expectedException \Exception
-     */
     public function bad_password_throws_exception()
     {
+        $this->expectException(\Exception::class);
         $this->createNewSafeBoxService->execute(new CreateNewSafeBoxRequest('name', ''));
     }
 
-    /**
-     * @test
-     * @expectedException \SafeBox\Domain\SafeBox\SafeBoxExistsException
-     */
-    public function box_already_exists_throws_exception_mock_version()
+    public function test_box_already_exists_throws_exception_mock_version()
     {
+        $this->expectException(\SafeBox\Domain\SafeBox\SafeBoxExistsException::class);
         $name = 'name';
         $password = '¡Strong_Password!';
 
@@ -72,12 +66,9 @@ class CreateNewSafeBoxServiceTest extends TestCase
         $this->createNewSafeBoxService->execute(new CreateNewSafeBoxRequest($name, $password));
     }
 
-    /**
-     * @test
-     * @expectedException \SafeBox\Domain\SafeBox\SafeBoxExistsException
-     */
-    public function box_already_exists_throws_exception()
+    public function test_box_already_exists_throws_exception()
     {
+        $this->expectException(\SafeBox\Domain\SafeBox\SafeBoxExistsException::class);
         $this->executeCreateNewSafeBox();
         $this->executeCreateNewSafeBox();
     }

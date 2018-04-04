@@ -10,21 +10,15 @@ use TypeError;
 class SafeBoxTest extends TestCase
 {
 
-    /**
-     * @test
-     * @expectedException TypeError
-     */
-    public function new_safebox_not_accepts_empty_name()
+    public function test_new_safebox_not_accepts_empty_name()
     {
+        $this->expectException(TypeError::class);
         new SafeBox(null, 'asdasdasdasd');
     }
 
-    /**
-     * @test
-     * @expectedException TypeError
-     */
-    public function new_safebox_not_accepts_empty_password()
+    public function test_new_safebox_not_accepts_empty_password()
     {
+        $this->expectException(TypeError::class);
         new SafeBox('asdasdasdasd', null);
     }
 
@@ -89,21 +83,20 @@ class SafeBoxTest extends TestCase
 
     /**
      * @test
-     * @expectedException \Exception
      */
     public function invalid_token_throws_exception()
     {
+        $this->expectException(\Exception::class);
         $safeBox = new SafeBox('name', 'password');
-
-        $this->assertFalse($safeBox->validateToken('invalid_token'));
+        $safeBox->validateToken('invalid_token');
     }
 
     /**
      * @test
-     * @expectedException \Exception
      */
     public function invalid_token_from_other_safebox_throws_exception()
     {
+        $this->expectException(\Exception::class);
         $password = 'password';
         $safeBox = new SafeBox('name', $password);
         $safeBox2 = new SafeBox('name', $password);
@@ -115,10 +108,11 @@ class SafeBoxTest extends TestCase
 
     /**
      * @test
-     * @expectedException \SafeBox\Domain\SafeBox\InvalidSafeBoxTokenException
      */
     public function token_is_expired_throws_exception()
     {
+
+        $this->expectException(\SafeBox\Domain\SafeBox\InvalidSafeBoxTokenException::class);
         $password = 'password';
         $safeBox = new SafeBox('name', $password);
 
@@ -131,10 +125,10 @@ class SafeBoxTest extends TestCase
 
     /**
      * @test
-     * @expectedException \SafeBox\Domain\SafeBox\WrongPasswordException
      */
     public function wrong_password_throws_exception()
     {
+        $this->expectException(\SafeBox\Domain\SafeBox\WrongPasswordException::class);
         $password = 'password';
         $expiration = 180;
 
@@ -145,10 +139,10 @@ class SafeBoxTest extends TestCase
 
     /**
      * @test
-     * @expectedException \SafeBox\Domain\SafeBox\WrongPasswordException
      */
     public function max_attempts_throws_exception()
     {
+        $this->expectException(\SafeBox\Domain\SafeBox\WrongPasswordException::class);
         $password = 'password';
         $expiration = 180;
 
@@ -159,12 +153,9 @@ class SafeBoxTest extends TestCase
         }
     }
 
-    /**
-     * @test
-     * @expectedException \SafeBox\Domain\SafeBox\SafeBoxBlockedException
-     */
-    public function max_attempts_blocks_safebox_exception()
+    public function test_max_attempts_blocks_safebox_exception()
     {
+        $this->expectException(\SafeBox\Domain\SafeBox\SafeBoxBlockedException::class);
         $password = 'password';
         $expiration = 180;
 
@@ -173,12 +164,10 @@ class SafeBoxTest extends TestCase
         $safeBox->tokenByPassword('wrong_password', $expiration);
     }
 
-    /**
-     * @test
-     * @expectedException \SafeBox\Domain\SafeBox\SafeBoxBlockedException
-     */
-    public function blocked_safebox_throws_exception()
+
+    public function test_blocked_safebox_throws_exception()
     {
+        $this->expectException(\SafeBox\Domain\SafeBox\SafeBoxBlockedException::class);
         $password = 'password';
         $expiration = 180;
 
@@ -219,12 +208,9 @@ class SafeBoxTest extends TestCase
         $this->assertContains($item, $safeBox->getItemsByPassword($password));
     }
 
-    /**
-     * @test
-     * @expectedException \InvalidArgumentException
-     */
-    public function add_empty_item_throws_exception()
+    public function test_add_empty_item_throws_exception()
     {
+        $this->expectException(\InvalidArgumentException::class);
         $safeBox = new SafeBox('name', '¡Strong_Password!');
         $safeBox->addItem('');
     }

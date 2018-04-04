@@ -28,23 +28,17 @@ class AddSafeBoxItemServiceTest extends TestCase
         $this->addSafeBoxItemService = new AddSafeBoxItemService($this->safeBoxRepository);
     }
 
-    /**
-     * @test
-     * @expectedException \SafeBox\Domain\SafeBox\SafeBoxNotExistsException
-     */
-    public function wrong_id_throws_exception()
+    public function test_wrong_id_throws_exception()
     {
+        $this->expectException(\SafeBox\Domain\SafeBox\SafeBoxNotExistsException::class);
         $request = new AddSafeBoxItemRequest('not_exists_id', 'invalid_token', '');
 
         return $this->addSafeBoxItemService->execute($request);
     }
 
-    /**
-     * @test
-     * @expectedException \SafeBox\Domain\SafeBox\InvalidSafeBoxTokenException
-     */
-    public function wrong_token_throws_exception()
+    public function test_wrong_token_throws_exception()
     {
+        $this->expectException(\SafeBox\Domain\SafeBox\InvalidSafeBoxTokenException::class);
         $safeBox = new SafeBox('name', '¡Strong_Password!');
         $this->safeBoxRepository->add($safeBox);
 
@@ -53,12 +47,9 @@ class AddSafeBoxItemServiceTest extends TestCase
         return $this->addSafeBoxItemService->execute($request);
     }
 
-    /**
-     * @test
-     * @expectedException \InvalidArgumentException
-     */
-    public function empty_item_throws_exception()
+    public function test_empty_item_throws_exception()
     {
+        $this->expectException(\InvalidArgumentException::class);
         $password = '¡Strong_Password!';
         $safeBox = new SafeBox('name', $password);
         $this->safeBoxRepository->add($safeBox);
